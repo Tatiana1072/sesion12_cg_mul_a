@@ -36,9 +36,8 @@ function init() {
    renderer.setClearColor(new THREE.Color(0x000000));
    renderer.setSize(window.innerWidth, window.innerHeight);
 
-   var axes = new THREE.AxesHelper(10);
+   var axes = new THREE.AxesHelper(5);
    scene.add(axes);
-
 
    //Creacion de los 3 cubos con sus caracteristicas
    Cubo = []; //Se define un array para almacenar los 3 cubos
@@ -47,19 +46,21 @@ function init() {
    Cubo.push(cubo(tam, tam, tam, 0xFF0000, 'Standard', false));
    Cubo.push(cubo(tam, tam, tam, 0xFFFFFF, 'Phong', false));
 
-   for(var i=0; i<3; i++){//se translada los tres cubos con uno de sus vertices al origen de coordenadas
+   for(i=0; i<3; i++){//se translada los tres cubos con uno de sus vertices al origen de coordenadas
    Cubo[i].translateX(tam/2);
    Cubo[i].translateZ(tam/2);
    Cubo[i].translateY(tam/2);
 }
 
-for(var i=0; i<3; i++){//transformaciones de escalado y translacion sobre el eje Y
-if(i==1 || i=2){//Escalado que hace que las dimensiones sean la mitad del cubo anterior
+for(i=1; i<3; i++){//transformaciones de escalado y translacion sobre el eje Y
+//Escalado que hace que las dimensiones sean la mitad del cubo anterior
 escala=1/(2*i);//Escalado de la mitad del cubo anterior
-unidades=((9/8)*tam)*(i-1);
+unidades=(3*tam)/4+((3*tam)/8)*(i-1);
 Cubo[i].scale.set(escala, escala, escala);
 Cubo[i].translateY(unidades);
 }
+
+//Cubo[1].rotateY(Math.PI);
 
 //posicionamiento de la luz
    light = new THREE.PointLight(0xFFFF00);
@@ -67,7 +68,7 @@ Cubo[i].translateY(unidades);
    scene.add(light);
 
 //posicionamiento de la camara
-   camera.position.set(20, 20, 20);
+   camera.position.set(5, 5, 5);
    camera.lookAt(scene.position);
 //agrega la salida del render al elemento html
    document.getElementById("webgl-output").appendChild(renderer.domElement);

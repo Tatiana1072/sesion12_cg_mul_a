@@ -59,15 +59,21 @@ unidades=(3*tam)/4+((3*tam)/8)*(i-1);
 Cubo[i].scale.set(escala, escala, escala);
 Cubo[i].translateY(unidades);
 }
-angulo=Math.PI/12;
+angulo=Math.PI/6;
 Cubo[0].rotateY(angulo);
 Cubo[2].rotateY(angulo);
 
    //EJES: X rojo, Y verde, Z azul
 
-//b=(tam/2)*Math.tan(angulo);
-//Cubo[0].translateZ(b);
+b=(tam/2)*Math.sin(angulo);
+Cubo[0].translateZ(b);
 
+if(angulo<Math.PI/4){
+k=2*b/Math.sin(angulo);
+n=k*Math.cos(angulo);
+w=tam*Math.cos(angulo);
+Cubo[0].translateX(w-n);
+}
 
 //posicionamiento de la luz
    light = new THREE.PointLight(0xFFFF00);

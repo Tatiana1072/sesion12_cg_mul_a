@@ -59,14 +59,14 @@ unidades=(3*tam)/4+((3*tam)/8)*(i-1);
 Cubo[i].scale.set(escala, escala, escala);
 Cubo[i].translateY(unidades);
 }
-angulo=Math.PI/4
+angulo=Math.PI/12;
 Cubo[0].rotateY(angulo);
 Cubo[2].rotateY(angulo);
 
    //EJES: X rojo, Y verde, Z azul
-b=((tam*Math.sqrt(2))-tam)/2;
-//Cubo[0].translateX(b);
-Cubo[0].translateZ(b);
+
+//b=(tam/2)*Math.tan(angulo);
+//Cubo[0].translateZ(b);
 
 
 //posicionamiento de la luz

@@ -4,6 +4,9 @@ function cubo(x, y, z, color, material, alambrado) {
    var cubeGeometry = new THREE.BoxGeometry(x, y, z);
    var cubeMaterial;
    switch (material) {
+case 'Basic': cubeMaterial = new THREE.MeshBasicMaterial({color: color, wireframe: alambrado});
+      break;
+
       case 'Phong':
          cubeMaterial = new THREE.MeshPhongMaterial({
             color: color,
@@ -43,8 +46,8 @@ function init() {
    Cubo = []; //Se define un array para almacenar los 3 cubos
    tam = 1; //dimension inicial de los cubos
    Cubo.push(cubo(tam, tam, tam, 0x00FF00, 'Physical', false));
-   Cubo.push(cubo(tam, tam, tam, 0xFF0000, 'Standard', false));
-   Cubo.push(cubo(tam, tam, tam, 0xFFFFFF, 'Phong', false));
+   Cubo.push(cubo(tam, tam, tam, 0xFF0000, 'Physical', false));
+   Cubo.push(cubo(tam, tam, tam, 0xFFFFFF, 'Physical', false));
 
    for(i=0; i<3; i++){//se translada los tres cubos con uno de sus vertices al origen de coordenadas
    Cubo[i].translateX(tam/2);
@@ -63,19 +66,26 @@ angulo=Math.PI/4
 Cubo[0].rotateY(angulo);
 Cubo[2].rotateY(angulo);
 
-   //EJES: X rojo, Y verde, Z azul
-b=((tam*Math.sqrt(2))-tam)/2;
-//Cubo[0].translateX(b);
+//EJES: X rojo, Y verde, Z azul
+
+b=tam/Math.sqrt(8);
 Cubo[0].translateZ(b);
+Cubo[2].translateZ(b);
+
+Cubo[1].translateZ(-tam/2);
+Cubo[1].translateX(-tam/2);
+d=tam/Math.sqrt(2)
+Cubo[1].translateZ(d);
+Cubo[1].translateX(d);
 
 
 //posicionamiento de la luz
    light = new THREE.PointLight(0xFFFF00);
-   light.position.set(-10, 30, 10);
+   light.position.set(0, 5, 0);
    scene.add(light);
 
 //posicionamiento de la camara
-   camera.position.set(0, 10, 0);
+   camera.position.set(0, 15,0);
    camera.lookAt(scene.position);
 //agrega la salida del render al elemento html
    document.getElementById("webgl-output").appendChild(renderer.domElement);

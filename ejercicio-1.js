@@ -66,18 +66,23 @@ angulo=Math.PI/4
 Cubo[0].rotateY(angulo);
 Cubo[2].rotateY(angulo);
 
-//EJES: X rojo, Y verde, Z azul
 
 b=tam/Math.sqrt(8);
 Cubo[0].translateZ(b);
-Cubo[2].translateZ(b);
+
+Cubo[2].translateZ(tam/2);
+u=(3*tam)/4+(3*tam)/8
+Cubo[2].translateZ(-u);
+Cubo[2].translateZ(-tam/16);
+w=Math.sqrt(4*Math.pow(b, 2)+(1/4)*Math.pow(tam, 2))
+Cubo[2].translateZ(w);
+Cubo[2].translateZ(tam/8);
 
 Cubo[1].translateZ(-tam/2);
 Cubo[1].translateX(-tam/2);
-d=tam/Math.sqrt(2)
-Cubo[1].translateZ(d);
-Cubo[1].translateX(d);
-
+e=Math.sqrt(Math.pow(tam, 2)/2);
+Cubo[1].translateZ(e);
+Cubo[1].translateX(e);
 
 //posicionamiento de la luz
    light = new THREE.PointLight(0xFFFF00);

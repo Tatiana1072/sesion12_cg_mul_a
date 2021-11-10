@@ -68,12 +68,16 @@ Cubo[2].rotateY(angulo);
 b=(tam/2)*Math.sin(angulo);
 Cubo[0].translateZ(b);
 
-if(angulo<Math.PI/4){
-k=2*b/Math.sin(angulo);
-n=k*Math.cos(angulo);
-w=tam*Math.cos(angulo);
-Cubo[0].translateX(w-n);
-}
+d=(tam/4)*Math.sin(angulo);
+Cubo[2].translateZ(d);
+
+Cubo[1].translateZ(-tam/2);
+Cubo[1].translateX(-tam/2);
+u=tam*Math.sin(angulo);
+Cubo[1].translateX(u);
+Cubo[1].translateX(tam/8);
+g=b*Math.sin(angulo);
+Cubo[1].translateZ(g+tam/2);
 
 //posicionamiento de la luz
    light = new THREE.PointLight(0xFFFF00);

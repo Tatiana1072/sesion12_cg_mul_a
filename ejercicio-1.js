@@ -86,11 +86,11 @@ Cubo[1].translateX(e);
 
 //posicionamiento de la luz
    light = new THREE.PointLight(0xFFFF00);
-   light.position.set(0, 5, 0);
+   light.position.set(3, 4,5);
    scene.add(light);
 
 //posicionamiento de la camara
-   camera.position.set(0, 15,0);
+   camera.position.set(3, 4,5);
    camera.lookAt(scene.position);
 //agrega la salida del render al elemento html
    document.getElementById("webgl-output").appendChild(renderer.domElement);
